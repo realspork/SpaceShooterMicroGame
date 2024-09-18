@@ -42,4 +42,30 @@ public class Asteroid : MonoBehaviour
         Destroy(this.gameObject, this.maxLifetime);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            if((this.size * 0.5f) >= this.minSize)
+            {
+                CreateSplit();
+                CreateSplit();
+            }
+
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void CreateSplit()
+    {
+        Vector2 position = this.transform.position;
+        position += UnityEngine.Random.insideUnitCircle * 0.5f;
+
+        //CreateSplit not implemented?
+        Asteroid half = Instantiate(this, this.transform.rotation);
+        half.size = this.size * 0.5f;
+
+        half.SetTrajectory(UnityEngine.Random.insideUnitCircle.normalized);
+    }
+
 }

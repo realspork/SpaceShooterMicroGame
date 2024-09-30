@@ -62,10 +62,10 @@ public class Asteroid : MonoBehaviour
         position += UnityEngine.Random.insideUnitCircle * 0.5f;
 
         //CreateSplit not implemented?
-        Asteroid half = Instantiate(this, this.transform.rotation);
-        half.size = this.size * 0.5f;
+        //Asteroid half = Instantiate(this, this.transform.rotation);
+        //half.size = this.size * 0.5f;
 
-        half.SetTrajectory(UnityEngine.Random.insideUnitCircle.normalized);
+        //half.SetTrajectory(UnityEngine.Random.insideUnitCircle.normalized);
     }
 
 }
